@@ -4,6 +4,6 @@
 
 [node name="Block" type="Node2D"]
 
-[node name="Blocked-blank-tile" type="Sprite2D" parent="." groups=["Obstacles"]]
+[node name="Blocked-blank-tile" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
 texture = ExtResource("1_uw5dl")

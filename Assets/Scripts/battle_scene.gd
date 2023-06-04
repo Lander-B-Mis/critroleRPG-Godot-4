@@ -9,7 +9,7 @@ func _input(event):
 	var cell_size = board.tile_set.tile_size
 	
 	if event.is_action_pressed("mouse_left"):
-		var target_cell = (event.position / cell_size).floor() * cell_size
+		var target_cell = (Vector2i(event.position) / cell_size).floor() * cell_size
 		var path_points = board.get_astar_path_avoiding_obstacles_and_units(player.global_position, target_cell)
 		line.position = cell_size/2
 		line.points = path_points
