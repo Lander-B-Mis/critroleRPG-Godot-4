@@ -1,3 +1,108 @@
-[gd_scene format=3 uid="uid://bfm6yffodn2fn"]
+[gd_scene load_steps=9 format=3 uid="uid://bfm6yffodn2fn"]
 
-[node name="Test Scene - Battle" type="Node2D"]
+[ext_resource type="Script" path="res://Assets/Scripts/battle_scene.gd" id="1_g71ai"]
+[ext_resource type="Texture2D" uid="uid://di2ocphffky5t" path="res://Assets/Sprites/blank-tile.png" id="1_h07er"]
+[ext_resource type="Script" path="res://Assets/Scripts/AstarDebug.gd" id="2_kemft"]
+[ext_resource type="Script" path="res://Assets/Scripts/astarTileMap.gd" id="4_yx6fp"]
+[ext_resource type="PackedScene" uid="uid://bh3qa5sebqk2x" path="res://Scenes/Objects/Static/block.tscn" id="5_8nxh7"]
+[ext_resource type="PackedScene" uid="uid://b7ygv44jbedif" path="res://Scenes/Objects/Static/player_node.tscn" id="6_8sgkv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5ix2"]
+texture = ExtResource("1_h07er")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pj41k"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_x5ix2")
+
+[node name="Test Scene - Battle" type="Node2D" node_paths=PackedStringArray("board", "astarDebug", "line")]
+script = ExtResource("1_g71ai")
+board = NodePath("Board")
+astarDebug = NodePath("AstarDebug")
+line = NodePath("Line2D")
+
+[node name="AstarDebug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_kemft")
+board = NodePath("../Board")
+
+[node name="Board" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_pj41k")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 0, 0, 131072, 0, 0, 131073, 0, 0, 65537, 0, 0, 131074, 0, 0, 65538, 0, 0, 327689, 0, 0, 327688, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 196617, 0, 0, 196616, 0, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 65545, 0, 0, 65544, 0, 0, 65543, 0, 0, 65542, 0, 0, 65541, 0, 0, 65540, 0, 0, 65539, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0)
+script = ExtResource("4_yx6fp")
+
+[node name="Block" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(64, 128)
+
+[node name="Block2" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(96, 128)
+
+[node name="Block3" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(128, 128)
+
+[node name="Block4" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(192, 0)
+
+[node name="Block5" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(192, 32)
+
+[node name="Block6" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(192, 64)
+
+[node name="Block7" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 0)
+
+[node name="Block8" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 32)
+
+[node name="Block9" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 64)
+
+[node name="Block10" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 96)
+
+[node name="Block11" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 128)
+
+[node name="Block12" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(160, 0)
+
+[node name="Block13" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(128, 0)
+
+[node name="Block14" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+
+[node name="Block15" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(0, 32)
+
+[node name="Block16" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(32, 0)
+
+[node name="Block17" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(0, 160)
+
+[node name="Block18" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(32, 160)
+
+[node name="Block19" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(288, 160)
+
+[node name="Block20" parent="Board" groups=["Obstacles"] instance=ExtResource("5_8nxh7")]
+position = Vector2(192, 96)
+
+[node name="PlayerNode" parent="Board" groups=["Units"] instance=ExtResource("6_8sgkv")]
+position = Vector2(64, 64)
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 4.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
